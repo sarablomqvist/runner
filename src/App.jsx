@@ -4,29 +4,34 @@ import './App.css'
 function Km() {
     const [km, setKm] = useState('')
     const [time, setTime] = useState('')
+    const [list, setList] = useState([])
+
+    const handleKmChange = (event) => {
+        setKm(event.target.value)
+    }
+
+    const handleTimeChange = (event) => {
+        setTime(event.target.value)
+    }
+
+    const addEntry = () => {
+        setList([...list, { km, time }])
+        setKm('')
+        setTime('')
+    }
 
     return (
         <>
-            <input
-                value={time}
-                onChange={(event) => {
-                    setTime(event.target.value)
-                }}
-                placeholder="Hur länge? (tid)"
-            ></input>
-            <input
-                value={km}
-                onChange={(event) => {
-                    setKm(event.target.value)
-                }}
-                placeholder="Hur långt? (km)"
-            ></input>
-            <button>Beräkna</button>
+            <input value={time} onChange={handleTimeChange} placeholder="Hur länge? (tid)"></input>
+            <input value={km} onChange={handleKmChange} placeholder="Hur långt? (km)"></input>
+            <button onClick={addEntry}>Beräkna</button>
             <div>
                 <ol>
-                    <li>
-                        {km} + {time}
-                    </li>
+                    {list.map((onePost, index) => (
+                        <li key={index}>
+                            Tid: {onePost.time} min - Sträcka: {onePost.km} km =
+                        </li>
+                    ))}
                 </ol>
             </div>
         </>
@@ -36,6 +41,7 @@ function Km() {
 function App() {
     return (
         <>
+        <h1>Run tracker</h1>
             <Km />
         </>
     )
