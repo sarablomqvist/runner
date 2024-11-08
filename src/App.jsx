@@ -1,38 +1,73 @@
 import { useState } from 'react'
 import './App.css'
 
-function Km() {
+function KmAndTime() {
     const [km, setKm] = useState('')
     const [time, setTime] = useState('')
     const [list, setList] = useState([])
+    const [error, setError] = useState('')
 
     const handleKmChange = (event) => {
-        setKm(event.target.value)
+        const value = event.target.value
+        if (/^\d*\.?\d*$/.test(value)) {
+            setKm(value)
+            setError('')
+        } else {
+            setError('Skriv en siffra!')
+        }
     }
 
     const handleTimeChange = (event) => {
-        setTime(event.target.value)
+        const value = event.target.value
+        if (/^\d*\.?\d*$/.test(value)) {
+            setTime(event.target.value)
+            setError('')
+        } else {
+            alert('Skriv en siffra')
+        }
     }
 
     const addEntry = () => {
-        setList([...list, { km, time }])
-        setKm('')
-        setTime('')
+        if (km && time) {
+            const speed = (time/km).toFixed(2)
+            setList([...list, { km, time, speed }])
+            setKm('')
+            setTime('')
+            setError('')
+        } else {
+            alert('Fyll i båda fält')
+        }
     }
 
     return (
         <>
-            <input value={time} onChange={handleTimeChange} placeholder="Hur länge? (tid)"></input>
-            <input value={km} onChange={handleKmChange} placeholder="Hur långt? (km)"></input>
-            <button onClick={addEntry}>Beräkna</button>
+            <div className="runtracker-wrapper">
+                <input value={time} onChange={handleTimeChange} placeholder="Hur länge? (min)"></input>
+                <input value={km} onChange={handleKmChange} placeholder="Hur långt? (km)"></input>
+                <button onClick={addEntry}>Beräkna</button>
+                <p>{error}</p>
+            </div>
             <div>
-                <ol>
-                    {list.map((onePost, index) => (
-                        <li key={index}>
-                            Tid: {onePost.time} min - Sträcka: {onePost.km} km =
-                        </li>
-                    ))}
-                </ol>
+                <table>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Min</th>
+                            <th>Antal km</th>
+                            <th>Tempo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {list.map((onePost, index) => (
+                            <tr key={index}>
+                                <td></td>
+                                <td>{onePost.time}</td>
+                                <td>{onePost.km}</td>
+                                <td>{onePost.speed} min / km</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
             </div>
         </>
     )
@@ -41,8 +76,8 @@ function Km() {
 function App() {
     return (
         <>
-        <h1>Run tracker</h1>
-            <Km />
+            <h1>Run tracker</h1>
+            <KmAndTime />
         </>
     )
 }
