@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 
 function KmAndTime() {
@@ -6,6 +6,17 @@ function KmAndTime() {
     const [time, setTime] = useState('')
     const [list, setList] = useState([])
     const [error, setError] = useState('')
+
+    useEffect(() => {
+        const savedList = localStorage.getItem('runTrackerList')
+        if (savedList) {
+            setList(JSON.parse(savedList))
+        }
+    }, [])
+
+    useEffect(() => {
+        localStorage.setItem('runTrackerList', JSON.stringify(list))
+    }, [list])
 
     const handleKmChange = (event) => {
         const value = event.target.value
@@ -29,8 +40,13 @@ function KmAndTime() {
 
     const addEntry = () => {
         if (km && time) {
-            const speed = (time/km).toFixed(2)
-            setList([...list, { km, time, speed }])
+            const paceInMinutes = (time / km).toFixed(2)
+            const minutes = Math.floor(paceInMinutes)
+            const seconds = Math.round((paceInMinutes - minutes) * 60)
+            const pace = `${minutes}:${seconds.toString().padStart(2, '0')}`
+
+            const newList = [...list, { km, time, speed: pace }]
+            setList(newList)
             setKm('')
             setTime('')
             setError('')
@@ -38,6 +54,9 @@ function KmAndTime() {
             alert('Fyll i båda fält')
         }
     }
+
+    const [date, setDate] = useState(new Date())
+    const theDate = date.toDateString()
 
     return (
         <>
@@ -51,7 +70,7 @@ function KmAndTime() {
                 <table>
                     <thead>
                         <tr>
-                            <th></th>
+                            <th>Datum</th>
                             <th>Min</th>
                             <th>Antal km</th>
                             <th>Tempo</th>
@@ -60,7 +79,7 @@ function KmAndTime() {
                     <tbody>
                         {list.map((onePost, index) => (
                             <tr key={index}>
-                                <td></td>
+                                <td>{theDate}</td>
                                 <td>{onePost.time}</td>
                                 <td>{onePost.km}</td>
                                 <td>{onePost.speed} min / km</td>
@@ -76,8 +95,10 @@ function KmAndTime() {
 function App() {
     return (
         <>
-            <h1>Run tracker</h1>
-            <KmAndTime />
+            <div className="background">
+                <h1>Run tracker</h1>
+                <KmAndTime />
+            </div>
         </>
     )
 }
