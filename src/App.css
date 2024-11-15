@@ -2,7 +2,7 @@
     max-width: 1280px;
     margin: 0 auto;
     padding: 1rem;
-    text-align: center;
+    /* text-align: center; */
 }
 
 body {
@@ -15,23 +15,6 @@ body {
 
 button {
     border: 1px solid black;
-}
-
-.runtracker-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    background-color: rgb(73, 95, 176);
-    padding: 1rem;
-    border-radius: 8px;
-    border: 1px solid black;
-}
-
-input {
-    padding: 1rem;
-    border-radius: 5px;
-    border: none;
 }
 
 table,

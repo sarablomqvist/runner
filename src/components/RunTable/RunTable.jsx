@@ -1,4 +1,5 @@
 import React from 'react'
+import style from './RunTable.module.css'
 
 function RunTable({ list, date }) {
     return (

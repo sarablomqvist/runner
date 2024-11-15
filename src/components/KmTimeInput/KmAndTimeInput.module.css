@@ -1,0 +1,22 @@
+.wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.runtrackerWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background-color: rgb(73, 95, 176);
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid black;
+    width: 800px;
+}
+
+.input {
+    padding: 1rem;
+    border-radius: 5px;
+    border: none;
+}
