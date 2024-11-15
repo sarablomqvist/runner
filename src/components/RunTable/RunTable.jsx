@@ -3,7 +3,7 @@ import style from './RunTable.module.css'
 
 function RunTable({ list, date }) {
     return (
-        <div>
+        <div className={style.wrapper}>
             <table>
                 <thead>
                     <tr>

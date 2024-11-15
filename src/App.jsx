@@ -1,13 +1,13 @@
 import React from 'react'
-import './App.css'
 import KmTime from './components/KmTime/KmTime'
 import Nav from './components/Nav/Nav'
+import style from './App.module.css'
 
 function App() {
     return (
-        <div>
+        <div className={style.background}>
             <Nav />
-            <h1>Run tracker</h1>
+            <h1 className={style.h1}>Run tracker</h1>
             <KmTime />
         </div>
     )

@@ -1,23 +1,26 @@
 #root {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 1rem;
-    /* text-align: center; */
+    max-width: 1300px;
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
-body {
+.h1 {
+    display: flex;
+    justify-content: center;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin: 12rem 0 2rem 0;
+}
+
+.background {
     background-image: url(/img/runner.jpg);
     background-size: cover;
     background-position: center;
     width: 100%;
-    height: 100%;
+    height: 1000px;
 }
 
-button {
-    border: 1px solid black;
-}
-
-table,
+/* table,
 th,
 td {
     border: 1px solid black;
@@ -29,4 +32,4 @@ td {
 
 table {
     width: 1000px;
-}
+} */
