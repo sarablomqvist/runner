@@ -1,7 +1,8 @@
 import React from 'react'
 import style from './RunTable.module.css'
+import DeleteRun from '../DeleteRun/DeleteRun'
 
-function RunTable({ list, date }) {
+function RunTable({ list, date, onDelete }) {
     return (
         <div className={style.wrapper}>
             <table>
@@ -11,6 +12,7 @@ function RunTable({ list, date }) {
                         <th>Min</th>
                         <th>Antal km</th>
                         <th>Tempo</th>
+                        <th>Ta bort</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -20,10 +22,14 @@ function RunTable({ list, date }) {
                             <td>{entry.time} min</td>
                             <td>{entry.km} km</td>
                             <td>{entry.speed} min / km</td>
+                            <td>
+                                <button onClick={() => onDelete(index)}>X</button>
+                            </td>
                         </tr>
                     ))}
                 </tbody>
             </table>
+            <DeleteRun />
         </div>
     )
 }

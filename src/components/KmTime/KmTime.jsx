@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import KmAndTimeInput from '../KmTimeInput/KmAndTimeInput'
 import RunTable from '../RunTable/RunTable'
+import DeleteRun from '../DeleteRun/DeleteRun'
 
 function KmTime() {
     const [km, setKm] = useState('')
@@ -46,12 +47,18 @@ function KmTime() {
         }
     }
 
+    const handleDelete = (index) => {
+        const newList = list.filter((_, i) => i !== index)
+        setList(newList)
+        localStorage.setItem('LocaleStorageList', JSON.stringify(newList))
+    }
+
     const addEntry = () => {
         if (km && time) {
             const paceInMinutes = time / km //tid delat på km
             const minutes = Math.floor(paceInMinutes) //tagit bort decimaler
             const seconds = Math.round((paceInMinutes - minutes) * 60) //tar bort minuter = bara decimaler kvar * 60 = sekunder. Avrunda
-            const pace = `${minutes}:${seconds.toString().padStart(2, '0')}` //gjort om nr till sträng o sen lagt på 0 om "siffran" är mindre än 2 tecken
+            const pace = `${minutes}:${seconds.toString().padStart(2, '0')}` //gjort om nr till sträng o sen lagt på 0 i början om "siffran" är mindre än 2 tecken
 
             const newItem = { km, time, speed: pace }
             const newList = [...list, newItem]
@@ -75,7 +82,8 @@ function KmTime() {
                 onAddEntry={addEntry}
                 error={error}
             />
-            <RunTable list={list} date={date} />
+            <RunTable list={list} date={date} onDelete={handleDelete} />
+            <DeleteRun />
         </>
     )
 }
