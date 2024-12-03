@@ -6,7 +6,7 @@ function Home() {
     return (
         <div>
             {' '}
-            <h1 className={style.h1}>Run log</h1>
+            <h1 className={style.h1}>Löpning</h1>
             <KmTime />
         </div>
     )
