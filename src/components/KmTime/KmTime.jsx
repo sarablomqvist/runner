@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import KmAndTimeInput from '../KmTimeInput/KmAndTimeInput'
 import RunTable from '../RunTable/RunTable'
 
@@ -14,17 +14,6 @@ function KmTime() {
     if (list == null) {
         setList([])
     }
-
-    // useEffect(() => {
-    //     localStorage.setItem('runTrackerList', JSON.stringify(list))
-    // }, [list])
-
-    // useEffect(() => {
-    //     const savedList = localStorage.getItem('runTrackerList')
-    //     if (savedList) {
-    //         setList(JSON.parse(savedList))
-    //     }
-    // }, [])
 
     const handleKmChange = (event) => {
         const value = event.target.value
@@ -97,7 +86,7 @@ function KmTime() {
                 onDateChange={handleDate}
                 onKmChange={handleKmChange}
                 onTimeChange={handleTimeChange}
-                onAddEntry={addEntry}
+                addEntry={addEntry}
                 enterClick={enterClick}
                 error={error}
             />

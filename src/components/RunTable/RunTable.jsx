@@ -1,7 +1,7 @@
 import React from 'react'
 import style from './RunTable.module.css'
 
-function RunTable({ list, date, onDelete }) {
+function RunTable({ list, onDelete }) {
     return (
         <div className={style.wrapper}>
             <table>

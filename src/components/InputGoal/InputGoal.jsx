@@ -1,26 +1,35 @@
 import React, { useState } from 'react'
 import style from './InputGoal.module.css'
 
-function InputGoal() {
+function InputGoal({ addGoal }) {
     const [km, setKm] = useState('')
+    const [time, setTime] = useState('')
 
     const handleKm = (event) => {
         const value = event.target.value
-        if (value) {
-            setKm(value)
+        setKm(value)
+    }
+
+    const handleTime = (event) => {
+        const value = event.target.value
+        setTime(value)
+    }
+
+    const handleAddGoal = () => {
+        if (km && time) {
+            addGoal(km, time)
+            setKm('')
+            setTime('')
         }
     }
 
     return (
         <div className={style.wrapper}>
-            <input
-                className={style.input}
-                onChange={handleKm}
-                value={km}
-                placeholder="Distans"
-            ></input>
-            <input className={style.input} placeholder="Tid"></input>
-            <button className={style.button}>Räkna ut medeltempo</button>
+            <input className={style.input} onChange={handleKm} value={km} placeholder="Distans"></input>
+            <input className={style.input} onChange={handleTime} value={time} placeholder="Tid"></input>
+            <button onClick={handleAddGoal} className={style.button}>
+                OK
+            </button>
         </div>
     )
 }
