@@ -1,6 +1,6 @@
 import React from 'react'
 
-function TableGoal({ handleKm }) {
+function TableGoal({ onChange }) {
     return (
         <>
             <table>
@@ -13,9 +13,9 @@ function TableGoal({ handleKm }) {
                 </thead>
                 <tbody>
                     <tr>
-                        <td>{handleKm}</td>
-                        <td>2.15 h</td>
-                        <td>6.15 min / km</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                     </tr>
                 </tbody>
             </table>

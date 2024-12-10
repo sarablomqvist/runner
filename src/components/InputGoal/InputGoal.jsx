@@ -9,7 +9,6 @@ function InputGoal() {
         if (value) {
             setKm(value)
         }
-        console.log(value)
     }
 
     return (
@@ -17,7 +16,6 @@ function InputGoal() {
             <input
                 className={style.input}
                 onChange={handleKm}
-                handleKm={handleKm}
                 value={km}
                 placeholder="Distans"
             ></input>

@@ -88,8 +88,6 @@ function KmTime() {
         }
     }
 
-
-
     return (
         <>
             <KmAndTimeInput
@@ -103,6 +101,7 @@ function KmTime() {
                 enterClick={enterClick}
                 error={error}
             />
+
             <RunTable date={handleDate} list={list} onDelete={handleDelete} />
         </>
     )

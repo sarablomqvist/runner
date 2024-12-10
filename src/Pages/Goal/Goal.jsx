@@ -8,7 +8,7 @@ function Goal() {
         <div className={style.container}>
             <h1 className={style.h1}>Mina mål</h1>
             <InputGoal />
-            <TableGoal />
+            <TableGoal/>
         </div>
     )
 }
