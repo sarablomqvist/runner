@@ -16,11 +16,9 @@ function InputGoal({ addGoal }) {
     }
 
     const handleAddGoal = () => {
-        if (km && time) {
             addGoal(km, time)
             setKm('')
             setTime('')
-        }
     }
 
     return (
