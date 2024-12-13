@@ -15,6 +15,7 @@ function KmTime() {
         setList([])
     }
 
+    // lägger till Kilometer (nummer)
     const handleKmChange = (event) => {
         const value = event.target.value
         if (value) {
@@ -25,6 +26,7 @@ function KmTime() {
         }
     }
 
+    //lägger till tid (nummer)
     const handleTimeChange = (event) => {
         const value = event.target.value
         if (value) {
@@ -35,12 +37,7 @@ function KmTime() {
         }
     }
 
-    const handleDelete = (index) => {
-        const newList = list.filter((_, i) => i !== index)
-        setList(newList)
-        localStorage.setItem('LocaleStorageList', JSON.stringify(newList))
-    }
-
+    //lägger till datum (valfri sträng)
     const handleDate = (event) => {
         const value = event.target.value
         if (value) {
@@ -51,6 +48,14 @@ function KmTime() {
         }
     }
 
+    //raderar rad
+    const handleDelete = (index) => {
+        const newList = list.filter((_, i) => i !== index)
+        setList(newList)
+        localStorage.setItem('LocaleStorageList', JSON.stringify(newList))
+    }
+
+    //tar hand om klick-knappen
     const addEntry = () => {
         if (km && time && date) {
             const paceInMinutes = time / km //tid delat på km
@@ -71,6 +76,7 @@ function KmTime() {
         }
     }
 
+    //gör så att jag kan trycka på enterknappen
     const enterClick = (event) => {
         if (event.key === 'Enter') {
             addEntry()

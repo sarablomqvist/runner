@@ -21,10 +21,16 @@ function InputGoal({ addGoal }) {
             setTime('')
     }
 
+    const enterClick = (event) => {
+        if (event.key === 'Enter') {
+            handleAddGoal()
+        }
+    }
+
     return (
         <div className={style.wrapper}>
-            <input className={style.input} onChange={handleKm} value={km} placeholder="Distans"></input>
-            <input className={style.input} onChange={handleTime} value={time} placeholder="Tid"></input>
+            <input className={style.input} onChange={handleKm} value={km} onKeyDown={enterClick} placeholder="Distans"></input>
+            <input className={style.input} onChange={handleTime} value={time} onKeyDown={enterClick} placeholder="Tid"></input>
             <button onClick={handleAddGoal} className={style.button}>
                 OK
             </button>

@@ -8,19 +8,17 @@ function TableGoal({ goals }) {
                     <tr>
                         <th>Distans</th>
                         <th>Min</th>
+                        <th>Ta bort</th>
                     </tr>
                 </thead>
                 <tbody>
                     {goals.map((goal, index) => (
                         <tr key={index}>
-                            <td>{goal.km}</td>
-                            <td>{goal.time}</td>
+                            <td>{goal.km} km</td>
+                            <td>{goal.time} min</td>
+                            <td><button></button></td>
                         </tr>
                     ))}
-                    <tr>
-                        <td>21.1 km</td>
-                        <td>2 h 15 min</td>
-                    </tr>
                     <tr>
                         <td>10 km</td>
                         <td>55 min</td>
