@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
-import KmAndTimeInput from '../KmTimeInput/KmAndTimeInput'
 import RunTable from '../RunTable/RunTable'
+import DeleteButton from '../DeleteButton/DeleteButton'
+import RunInputForm from '../RunInputForm/RunInputForm'
 
-function KmTime() {
+function PaceTracker() {
     const [km, setKm] = useState('')
     const [time, setTime] = useState('')
     const savedJson = localStorage.getItem('LocaleStorageList')
@@ -15,7 +16,7 @@ function KmTime() {
         setList([])
     }
 
-    // lägger till Kilometer (nummer)
+    //lägger till kilometer (nummer)
     const handleKmChange = (event) => {
         const value = event.target.value
         if (value) {
@@ -55,7 +56,7 @@ function KmTime() {
         localStorage.setItem('LocaleStorageList', JSON.stringify(newList))
     }
 
-    //tar hand om klick-knappen
+    //lägger till värdet i inputfälten till listan genom att trycka på knapp
     const addEntry = () => {
         if (km && time && date) {
             const paceInMinutes = time / km //tid delat på km
@@ -85,7 +86,7 @@ function KmTime() {
 
     return (
         <>
-            <KmAndTimeInput
+            <RunInputForm
                 date={date}
                 km={km}
                 time={time}
@@ -97,9 +98,13 @@ function KmTime() {
                 error={error}
             />
 
-            <RunTable date={handleDate} list={list} onDelete={handleDelete} />
+            <RunTable
+                date={handleDate}
+                list={list}
+                onDelete={(index) => <DeleteButton onClick={() => handleDelete(index)} />}
+            />
         </>
     )
 }
 
-export default KmTime
+export default PaceTracker

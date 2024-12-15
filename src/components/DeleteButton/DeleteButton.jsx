@@ -1,9 +1,9 @@
 import React from 'react'
 
-const deleteButton = ({ onClick }) => {
+function DeleteButton({ onClick }) {
   return (
     <button onClick={onClick}>Ta bort</button>
   )
 }
 
-export default deleteButton
+export default DeleteButton

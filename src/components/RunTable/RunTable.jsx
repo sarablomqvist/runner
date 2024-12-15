@@ -21,9 +21,7 @@ function RunTable({ list, onDelete }) {
                             <td className={style.tdColor}>{entry.time} min</td>
                             <td className={style.tdColor}>{entry.km} km</td>
                             <td>{entry.speed} min / km</td>
-                            <td>
-                                <button onClick={() => onDelete(index)}>X</button>
-                            </td>
+                            <td>{onDelete(index)}</td>
                         </tr>
                     ))}
                 </tbody>

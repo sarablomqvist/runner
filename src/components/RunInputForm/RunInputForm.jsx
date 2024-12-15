@@ -1,7 +1,7 @@
 import React from 'react'
-import style from './KmAndTimeInput.module.css'
+import style from './RunInputForm.module.css'
 
-function KmAndTimeInput({ km, time, onKmChange, onTimeChange, onDateChange, addEntry, error, date, enterClick }) {
+function RunInputForm({ km, time, onKmChange, onTimeChange, onDateChange, addEntry, error, date, enterClick }) {
     return (
         <div className={style.wrapper}>
             <div className={style.runtrackerWrapper}>
@@ -37,4 +37,4 @@ function KmAndTimeInput({ km, time, onKmChange, onTimeChange, onDateChange, addE
     )
 }
 
-export default KmAndTimeInput
+export default RunInputForm
